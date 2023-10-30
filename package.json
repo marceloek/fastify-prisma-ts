@@ -1,5 +1,5 @@
 {
-  "name": "fastify-prisma",
+  "name": "fastify-prisma-ts",
   "version": "1.0.0",
   "description": "Basic CRUD application with Fastify, Prisma and Typescript",
   "type": "module",
@@ -14,6 +14,14 @@
     "prisma:pull": "prisma migrate reset",
     "prisma:v": "prisma studio"
   },
+  "keywords": [
+    "crud",
+    "fastify",
+    "prisma",
+    "typescript"
+  ],
+  "author": "Marcelo Knob",
+  "license": "MIT",
   "devDependencies": {
     "@tsconfig/node-lts": "^18.12.5",
     "@types/node": "^20.8.9",
