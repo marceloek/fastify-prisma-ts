@@ -5,13 +5,13 @@
   "type": "module",
   "module": "src/server.ts",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
     "build": "tsc",
+    "dev": "tsx watch src/server.ts",
     "lint": "eslint src --ext .ts --fix",
-    "prisma:md": "prisma migrate dev --name migration --create-only",
-    "prisma:mm": "prisma migrate dev --name migration",
-    "prisma:ms": "prisma migrate reset",
-    "prisma:pull": "prisma migrate reset",
+    "prisma:mm": "prisma migrate dev --name migrate",
+    "prisma:md": "pnpm prisma:mm --name diff --create-only",
+    "prisma:mr": "prisma migrate reset",
+    "prisma:p": "prisma db pull",
     "prisma:v": "prisma studio"
   },
   "keywords": [
