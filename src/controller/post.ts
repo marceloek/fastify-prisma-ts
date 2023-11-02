@@ -22,7 +22,7 @@ export class PostController extends BaseController<Post> {
 
     await this.findById(id)
 
-    const post = (this.model as IModelPost).update({
+    const post = await (this.model as IModelPost).update({
       where: {
         id,
       },

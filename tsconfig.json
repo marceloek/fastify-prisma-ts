@@ -6,5 +6,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "extends": "@tsconfig/node-lts/tsconfig.json"
+  "extends": "@tsconfig/node-lts/tsconfig.json",
+  "exclude": ["node_modules"]
 }

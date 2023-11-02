@@ -11,7 +11,8 @@ Content-Type: application/json
 
 {
   "email": "fulano@teste.com",
-  "name": "Fulano Teste"
+  "name": "Fulano Teste",
+  "password": "fulano"
 }
 
 ###
@@ -21,7 +22,8 @@ Content-Type: application/json
 
 {
   "email": "cicrano@teste.com",
-  "name": "Cicrano Teste"
+  "name": "Cicrano Teste",
+  "password": "cicrano"
 }
 
 ###

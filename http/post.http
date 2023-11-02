@@ -11,7 +11,7 @@ Content-Type: application/json
 
 {
   "title": "Post do Fulano",
-  "content": "Novo conteúdo adicionado!",
+  "content": "Novo conteúdo do Fulano!",
   "authorId": 1
 }
 
@@ -22,10 +22,10 @@ Content-Type: application/json
 
 {
   "title": "Post do Cicrano",
-  "content": "Novo conteúdo adicionado!",
+  "content": "Novo conteúdo do Cicrano!",
   "authorId": 1
 }
 
 ###
 
-DELETE http://localhost:3333/post/2
+DELETE http://localhost:3333/post/1

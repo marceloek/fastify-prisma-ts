@@ -28,5 +28,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 # database
-postgres_data
+postgresql-data
 prisma/migrations/**/

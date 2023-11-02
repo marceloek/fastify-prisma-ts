@@ -3,8 +3,10 @@ import { z } from 'zod'
 
 import { PostController } from '@/controller/post.js'
 
+import { baseRoute } from './base.js'
+
 export async function postRoutes(app: FastifyInstance) {
-  const controller = new PostController()
+  const postController = new PostController()
 
   const paramsSchema = z.object({
     id: z.string(),
@@ -17,43 +19,5 @@ export async function postRoutes(app: FastifyInstance) {
     authorId: z.number(),
   })
 
-  app.get('/post', async () => {
-    const posts = await controller.find()
-
-    return posts
-  })
-
-  app.get('/post/:id', async req => {
-    const { id } = paramsSchema.parse(req.params)
-
-    const post = await controller.findById(+id)
-
-    return post
-  })
-
-  app.post('/post', async (req, rep) => {
-    const body = bodySchema.parse(req.body)
-
-    const post = await controller.create(body)
-
-    return rep.code(201).send(post)
-  })
-
-  app.put('/post/:id', async req => {
-    const { id } = paramsSchema.parse(req.params)
-
-    const body = bodySchema.parse(req.body)
-
-    const post = await controller.updateById(+id, body)
-
-    return post
-  })
-
-  app.delete('/post/:id', async req => {
-    const { id } = paramsSchema.parse(req.params)
-
-    const post = await controller.deleteById(+id)
-
-    return post
-  })
+  baseRoute(app, 'post', postController, paramsSchema, bodySchema)
 }
