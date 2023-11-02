@@ -1,6 +1,6 @@
 import { Prisma, User } from '@prisma/client'
 
-import { hashGenerator } from '@/utilts/hashGenerator.js'
+import { hashGenerator } from '@/utils/hashGenerator.js'
 
 import { BaseController } from './base.js'
 import { IOmitUser, IUserData } from './implement/user.js'
