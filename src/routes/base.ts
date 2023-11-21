@@ -1,55 +1,78 @@
 import { FastifyInstance } from 'fastify'
 import { ZodRawShape, z } from 'zod'
 
-import { PostController } from '@/controller/post.js'
-import { UserController } from '@/controller/user.js'
+import { PostRepository } from '@/repository/post.js'
+import { UserRepository } from '@/repository/user.js'
 
-type IController = UserController | PostController
+type IRepository = UserRepository | PostRepository
 
-export function baseRoute<IP extends ZodRawShape, IB extends ZodRawShape>(
+export function baseRoute<
+  IParams extends ZodRawShape,
+  IBody extends ZodRawShape,
+>(
   app: FastifyInstance,
   route: string,
-  controller: IController,
-  paramsSchema: z.ZodObject<IP>,
-  bodySchema: z.ZodObject<IB>,
+  Repository: IRepository,
+  paramsSchema: z.ZodObject<IParams>,
+  bodySchema: z.ZodObject<IBody>,
 ) {
-  app.get(`/${route}`, async () => {
-    const values = await controller.find()
+  app.route({
+    method: 'GET',
+    url: `/${route}`,
+    handler: async () => {
+      const values = await Repository.find()
 
-    return values
+      return values
+    },
   })
 
-  app.get(`/${route}/:id`, async req => {
-    const { id } = paramsSchema.parse(req.params)
+  app.route({
+    method: 'GET',
+    url: `/${route}/:id`,
+    handler: async req => {
+      const { id } = paramsSchema.parse(req.params)
 
-    const value = await controller.findById(+id)
+      const value = await Repository.findById(+id)
 
-    return value
+      return value
+    },
   })
 
-  app.post(`/${route}`, async (req, rep) => {
-    const body = bodySchema.parse(req.body)
+  app.route({
+    method: 'POST',
+    url: `/${route}`,
+    handler: async (req, rep) => {
+      const body = bodySchema.parse(req.body)
 
-    const value = await controller.create(body as never)
+      const value = await Repository.create(body as never)
 
-    return rep.code(201).send(value)
+      return rep.code(201).send(value)
+    },
   })
 
-  app.put(`/${route}/:id`, async req => {
-    const { id } = paramsSchema.parse(req.params)
+  app.route({
+    method: 'PUT',
+    url: `/${route}/:id`,
+    handler: async req => {
+      const { id } = paramsSchema.parse(req.params)
 
-    const body = bodySchema.parse(req.body)
+      const body = bodySchema.parse(req.body)
 
-    const value = await controller.updateById(+id, body as never)
+      const value = await Repository.updateById(+id, body as never)
 
-    return value
+      return value
+    },
   })
 
-  app.delete(`/${route}/:id`, async (req, rep) => {
-    const { id } = paramsSchema.parse(req.params)
+  app.route({
+    method: 'DELETE',
+    url: `/${route}/:id`,
+    handler: async (req, rep) => {
+      const { id } = paramsSchema.parse(req.params)
 
-    await controller.deleteById(+id)
+      await Repository.deleteById(+id)
 
-    return rep.code(204).send()
+      return rep.code(204).send()
+    },
   })
 }

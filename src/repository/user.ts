@@ -2,10 +2,10 @@ import { Prisma, User } from '@prisma/client'
 
 import { hashGenerator } from '@/utils/hashGenerator.js'
 
-import { BaseController } from './base.js'
+import { BaseRepository } from './base.js'
 import { IOmitUser, IUserData } from './implement/user.js'
 
-export class UserController extends BaseController<User> {
+export class UserRepository extends BaseRepository<User> {
   constructor() {
     super('user')
   }

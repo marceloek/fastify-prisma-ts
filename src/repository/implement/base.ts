@@ -1,6 +1,6 @@
 type IOmitId<T> = Omit<T, 'id'>
 
-interface IBaseController<T> {
+interface IBaseRepository<T> {
   find(): Promise<T[]>
   findById(id: number): Promise<T>
   create(data: IOmitId<T>): Promise<T>
@@ -8,4 +8,4 @@ interface IBaseController<T> {
   deleteById(id: number): Promise<T>
 }
 
-export type { IBaseController, IOmitId }
+export type { IBaseRepository, IOmitId }

@@ -5,7 +5,9 @@ import fastifyFavicon from 'fastify-favicon'
 
 import { routes } from './routes/index.js'
 
-const app = fastify()
+const app = fastify({
+  logger: true,
+})
 
 // app.register(fastifyCors, {
 //   origin: true,
@@ -41,6 +43,6 @@ app.register(fastifyJwt, {
   secret: app.config.JWT_PRIVATE_KEY,
 })
 
-Object.values(routes).forEach(route => app.register(route))
+routes.forEach(route => app.register(route))
 
 export default app

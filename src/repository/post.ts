@@ -1,24 +1,24 @@
 import { Post, Prisma } from '@prisma/client'
 
-import { BaseController } from './base.js'
+import { BaseRepository } from './base.js'
 import { IOmitId } from './implement/base.js'
-import { UserController } from './user.js'
+import { UserRepository } from './user.js'
 
 type IModelPost = Prisma.PostDelegate
 
-export class PostController extends BaseController<Post> {
-  userController: UserController
+export class PostRepository extends BaseRepository<Post> {
+  userRepository: UserRepository
 
   constructor() {
     super('post')
 
-    this.userController = new UserController()
+    this.userRepository = new UserRepository()
   }
 
   async updateById(id: number, data: IOmitId<Post>): Promise<Post> {
     const { authorId } = data
 
-    await this.userController.findById(authorId)
+    await this.userRepository.findById(authorId)
 
     await this.findById(id)
 

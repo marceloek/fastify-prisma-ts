@@ -1,18 +1,15 @@
 import app from './app.js'
 
-const { PORT: port } = app.config
-
 const initializeServer = async () => {
   await app.ready()
 
   app
-    .listen({ host: '0.0.0.0', port })
-    .then(() => {
-      console.log(`HTTP server running on http://localhost:${port}`)
-      return true
+    .listen({
+      host: '0.0.0.0',
+      port: app.config.PORT,
     })
-    .catch(() => {
-      console.log('Something went wrong!')
+    .catch(err => {
+      app.log.error(err)
       process.exit(1)
     })
 }

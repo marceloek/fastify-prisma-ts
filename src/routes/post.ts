@@ -1,12 +1,12 @@
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
 
-import { PostController } from '@/controller/post.js'
+import { PostRepository } from '@/repository/post.js'
 
 import { baseRoute } from './base.js'
 
 export async function postRoutes(app: FastifyInstance) {
-  const postController = new PostController()
+  const postRepository = new PostRepository()
 
   const paramsSchema = z.object({
     id: z.string(),
@@ -19,5 +19,5 @@ export async function postRoutes(app: FastifyInstance) {
     authorId: z.number(),
   })
 
-  baseRoute(app, 'post', postController, paramsSchema, bodySchema)
+  baseRoute(app, 'post', postRepository, paramsSchema, bodySchema)
 }

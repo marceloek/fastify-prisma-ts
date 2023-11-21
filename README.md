@@ -1,2 +1,3 @@
 # fastify-prisma-ts
-Basic CRUD application with Fastify, Prisma and Typescript
+
+Basic CRUD application with Fastify, Prisma and TypeScript

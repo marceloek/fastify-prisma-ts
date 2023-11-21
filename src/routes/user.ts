@@ -1,12 +1,12 @@
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
 
-import { UserController } from '@/controller/user.js'
+import { UserRepository } from '@/repository/user.js'
 
 import { baseRoute } from './base.js'
 
 export async function userRoutes(app: FastifyInstance) {
-  const userController = new UserController()
+  const userRepository = new UserRepository()
 
   const paramsSchema = z.object({
     id: z.string(),
@@ -18,5 +18,5 @@ export async function userRoutes(app: FastifyInstance) {
     password: z.string(),
   })
 
-  baseRoute(app, 'user', userController, paramsSchema, bodySchema)
+  baseRoute(app, 'user', userRepository, paramsSchema, bodySchema)
 }

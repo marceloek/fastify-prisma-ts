@@ -2,13 +2,13 @@ import { Prisma, User } from '@prisma/client'
 
 import { prisma } from '@/lib/prisma.js'
 
-import { IBaseController, IOmitId } from './implement/base.js'
+import { IBaseRepository, IOmitId } from './implement/base.js'
 
 export type IModelKeys = 'user' | 'post'
 
 type IModel = Prisma.UserDelegate | Prisma.PostDelegate
 
-export class BaseController<T> implements IBaseController<T> {
+export class BaseRepository<T> implements IBaseRepository<T> {
   model: IModel
 
   constructor(modelKey: IModelKeys) {
