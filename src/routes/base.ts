@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify'
-import { ZodRawShape, z } from 'zod'
+import { z } from 'zod'
 
 import { PostRepository } from '@/repository/post.js'
 import { UserRepository } from '@/repository/user.js'
@@ -7,8 +7,8 @@ import { UserRepository } from '@/repository/user.js'
 type IRepository = UserRepository | PostRepository
 
 export function baseRoute<
-  IParams extends ZodRawShape,
-  IBody extends ZodRawShape,
+  IParams extends z.ZodRawShape,
+  IBody extends z.ZodRawShape,
 >(
   app: FastifyInstance,
   route: string,
