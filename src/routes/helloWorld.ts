@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify'
 
-export async function helloWorld(app: FastifyInstance) {
+export async function helloWorldRoute(app: FastifyInstance) {
   app.route({
     url: '/',
     method: 'GET',
