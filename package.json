@@ -2,11 +2,12 @@
   "name": "fastify-prisma-ts",
   "version": "1.0.0",
   "private": true,
-  "description": "Basic CRUD application with Fastify, Prisma and TypeScript",
+  "description": "Basic CRUD application with Fastify, Prisma, PostgreSQL and TypeScript",
   "keywords": [
     "crud",
     "fastify",
     "prisma",
+    "postgresql",
     "typescript"
   ],
   "author": "Marcelo Knob",
