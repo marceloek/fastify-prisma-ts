@@ -13,10 +13,6 @@ const app = fastify({
 //   origin: true,
 // })
 
-app.register(fastifyFavicon, {
-  path: 'src',
-})
-
 await app.register(fastifyEnv, {
   dotenv: true,
   schema: {
@@ -41,6 +37,10 @@ await app.register(fastifyEnv, {
 
 app.register(fastifyJwt, {
   secret: app.config.JWT_PRIVATE_KEY,
+})
+
+app.register(fastifyFavicon, {
+  path: 'src',
 })
 
 routes.forEach(route => app.register(route))
