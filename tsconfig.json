@@ -1,11 +1,10 @@
 {
+  "extends": "@tsconfig/node-lts/tsconfig.json",
   "compilerOptions": {
-    "outDir": "./build",
-    "rootDir": "./src",
+    "outDir": "dist",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
-  },
-  "extends": "@tsconfig/node-lts/tsconfig.json",
-  "exclude": ["node_modules"]
+  }
 }

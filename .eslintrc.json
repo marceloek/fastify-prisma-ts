@@ -9,7 +9,8 @@
     "plugin:prettier/recommended",
     "plugin:promise/recommended"
   ],
-  "plugins": ["eslint-plugin-import-helpers"],
+  "plugins": ["simple-import-sort"],
+
   "rules": {
     "@typescript-eslint/naming-convention": [
       "error",
@@ -20,19 +21,6 @@
           "regex": "^I[A-Z]",
           "match": true
         }
-      }
-    ],
-
-    "import-helpers/order-imports": [
-      "error",
-      {
-        "newlinesBetween": "always",
-        "groups": [
-          ["module", "/(?=^@)(?!^@/)/"],
-          "/^@//",
-          ["parent", "sibling", "index"]
-        ],
-        "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ],
 
@@ -51,7 +39,10 @@
         "semi": false,
         "endOfLine": "lf"
       }
-    ]
+    ],
+
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
-  "ignorePatterns": ["build", "node_modules"]
+  "ignorePatterns": ["node_modules", "dist"]
 }
