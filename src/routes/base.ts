@@ -7,14 +7,14 @@ import { UserRepository } from '@/repository/user.js'
 type IRepository = UserRepository | PostRepository
 
 export function baseRoute<
-  IParams extends z.ZodRawShape,
-  IBody extends z.ZodRawShape,
+  IParams extends z.ZodObject<{ id: z.ZodType<string> }>,
+  IBody extends z.ZodObject,
 >(
   app: FastifyInstance,
   route: string,
   Repository: IRepository,
-  paramsSchema: z.ZodObject<IParams>,
-  bodySchema: z.ZodObject<IBody>,
+  paramsSchema: IParams,
+  bodySchema: IBody,
 ) {
   app.route({
     method: 'GET',
